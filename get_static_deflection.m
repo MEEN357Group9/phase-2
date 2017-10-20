@@ -1,0 +1,63 @@
+function z0 = get_static_deflection( vibration_model, FSAE_Race_Car )
+%This function returns the damping matrix of a car given the car data and
+%vibration model
+% Inputs:
+%   vibration_model       Is a string indicating the desired vibration model
+%   FSAE_Race_car        Is a structure that has the data for quantifying 
+%                                        the mass matrix
+%
+% Outputs:
+%  C                               Is a matrix containing the appropiate
+%                                        damping in the appropriate places
+
+
+% input error checking
+if ~ischar(vibration_model) 
+    error('vibration_model must be a string');
+elseif strcmp('quarter_car_1_DOF',vibration_model) || strcmp('quarter_car_2_DOF',...
+        vibration_model) 
+    
+elseif ~strcmp('quarter_car_1_DOF',vibration_model) && ~strcmp('quarter_car_2_DOF',...
+        vibration_model) 
+    error('The string for vibration_model must be either ''quarter_car_1_DOF'' or  ''quarter_car_2_DOF''.');
+    
+elseif ~isstruct(FSAE_Race_Car) 
+    error('FSAE_Race_Car must be a structure');
+else
+end
+
+if strcmp('quarter_car_1_DOF', vibration_model)
+    % For 1 DOF
+    % find the stiffness
+    K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
+    % K is in K(1)
+    % gives units of lb/ft
+    
+    % find the weight
+    w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
+        FSAE_Race_Car.power_plant.weight) / 4;
+    
+    % find z0
+    z0 = w/K(1); % gives units of ft
+    
+    
+elseif strcmp('quarter_car_2_DOF', vibration_model)
+    % For 2 DOF
+        % find the stiffness
+    K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
+    % gives units of lb/ft
+    % find the weight
+    w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
+        FSAE_Race_Car.power_plant.weight) / 4;
+    
+    ww = ( FSAE_Race_Car.wheel_front.weight + FSAE_Race_Car.wheel_rear.weight ) / 2;
+    
+    W = [ w; ww];
+    
+    % find z0
+    z0 = K\W; % gives units of ft
+       
+end
+
+end
+
