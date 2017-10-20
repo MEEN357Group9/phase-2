@@ -1,5 +1,5 @@
 % MEEN 357 Fall 2017 Project, Phase 2
-% Data structure for the vehicle chassis for the Texas A&M 2017 car.
+% Data structure for the vehicle chassis for the Texas A&M 2018 Baja car.
 
 % The following fields are common amoung all chassis.
 
@@ -18,22 +18,22 @@ field43 = 'seat_Z';     % distance from axle plane up to bottom of seat
 field44 = 'motor_X';    % distance from front axle back to CG of the motor
 field45 = 'motor_Z';    % distance from axle plane up to CG of the motor
 
-% The following values pertain to the 2017 Texas A&M race car.
+% The following values pertain to the 2016 Texas A&M race car.
 
-value32 = 'Texas A&M';
-value33 = 2017;
-value34 = 60;           % pounds
-value35 = 84.5;         % inches
-value36 = 22;           % inches
-value37 = 60.25;        % inches
-value38 = 22.75;        % inches
-value39 = 22.5;         % inches
-value40 = 24.23;        % inches
-value41 = 2.75;         % inches
-value42 = 35.5;         % inches
-value43 = -7;           % inches
-value44 = 42.5;         % inches
-value45 = -4;           % inches
+value32 = 'Texas A&M Baja';
+value33 = 2018;
+value34 = 75.0;          % pounds
+value35 = 71.5;          % inches
+value36 = 30.0;          % inches
+value37 = 58.0;          % inches
+value38 = 29.0;          % inches
+value39 = 24.0;          % inches
+value40 = 31.2;          % inches
+value41 = 10.5;          % inches
+value42 = 38.3;          % inches
+value43 = 14.3;          % inches
+value44 = 51.5;          % inches
+value45 = 8.0;           % inches
 
 % The data struct for a vehicle chassis:
 

@@ -1,4 +1,4 @@
-% MEEN 357 Fall 2017 Project, Phase 1
+% MEEN 357 Fall 2017 Project, Phase 2
 % This is a data structure for the rear wheel on the Texas A&M 2016 car.
 
 % The following fields are common amoung all wheel assemblies.

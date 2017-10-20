@@ -1,4 +1,4 @@
-% MEEN 357 Fall 2017 Project, Phase 1
+% MEEN 357 Fall 2017 Project, Phase 2
 % This is the data structure for driver Harry.
 
 % The following fields are common amoung all drivers.

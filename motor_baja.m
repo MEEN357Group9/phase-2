@@ -1,5 +1,5 @@
 % MEEN 357 Fall 2017 Project, Phase 2
-% Data structure for the motor and transmission for the Texas A&M 2017 car.
+% Data structure for motor and transmission for Texas A&M 2018 Baja car.
 
 % The following fields are common amoung all motors.
 
@@ -9,10 +9,10 @@ field31 = 'diameter';   % diameter as an approximation to a sphere
 
 % The following values pertain to a single cylinder engine.
 
-value29 = 'KTM 690';    % 690 cc 1 cylinder engine
-value30 = 87;           % pounds
+value29 = 'Briggs and Stratton Model 20 INTEK';
+value30 = 88;           % pounds
 value31 = 12;           % inches
 
-% The data struct for a 1 cylinder engine and transmission:
+% The data struct for a 1 cylinder engine with separate transmission:
 
 power_plant = struct(field29, value29, field30, value30, field31, value31);

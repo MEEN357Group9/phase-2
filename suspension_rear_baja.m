@@ -1,5 +1,5 @@
 % MEEN 357 Fall 2017 Project, Phase 2
-% This is a data structure for the rear suspension of Texas A&M 2017 car.
+% This is a data structure for rear suspension of Texas A&M 2018 Baja car.
 
 % The following fields are common amoung suspensions.
 
@@ -13,12 +13,12 @@ field28 = 'c';          % damping coefficient for the shock absorber
 
 % The following values to these fields pertain to a rear suspension.
 
-value23 = 'Ohlins TTX25 MKII';  % shock assembly used
+value23 = 'Fox Float Evol RC2'; % shock assembly used
 value24 = 'outboard';           % location of the shock absorber assembly
-value25 = 31;                   % angle - does not apply, as it's inboard
-value26 = 2;                    % stroke:    inches
-value27 = 350;                  % stiffness: pounds / inch
-value28 = 5;                    % damping:   pounds / (inch/sec) 
+value25 = 60;                   % angle
+value26 = 5.8;                  % stroke:    inches
+value27 = 140.0;                % stiffness: pounds / inch
+value28 = 14.0;                 % damping:   pounds / (inch/sec) 
 
 % The data struct for a rear suspension follows below.
 

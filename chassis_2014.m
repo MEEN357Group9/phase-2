@@ -1,4 +1,4 @@
-% MEEN 357 Fall 2017 Project, Phase 1
+% MEEN 357 Fall 2017 Project, Phase 2
 % Data structure for the vehicle chassis for the Texas A&M 2014 car.
 
 % The following fields are common amoung all chassis.

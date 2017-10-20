@@ -1,5 +1,5 @@
 % MEEN 357 Fall 2017 Project, Phase 2
-% This is a data structure for the rear wheel on the Texas A&M 2017 car.
+% This is a data structure for the rear wheel on Texas A&M 2018 Baja car.
 
 % The following fields are common amoung all wheel assemblies.
 
@@ -12,12 +12,12 @@ field16 = 'c';            % damping from the tire
 
 % The following values pertain to a rear wheel.
 
-value11 = 'Hoosier 18X6-10 R25B';
-value12 = 20;             % pounds
-value13 = 2;              % inches
-value14 = 2;              % inches
-value15 = 600;            % pounds / inch  (measured by the team)
-value16 = 3;              % pounds / (inch/sec)
+value11 = 'Maxxis Razr2 23x7-10';
+value12 = 27.0;          % pounds
+value13 = 12.0;          % inches
+value14 = 6.5;           % inches
+value15 = 300.0;         % pounds / inch
+value16 = 20.0;          % pounds / (inch/sec)
 
 % The data struct for a rear wheel is:
 
