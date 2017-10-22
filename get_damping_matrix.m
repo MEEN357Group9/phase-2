@@ -81,6 +81,23 @@ elseif strcmp(ad3, vibration_model)
     lf = cg; % ft
     lr = l - cg; % ft
     
+    % note: c1 is the front suspension damp; c2 is the rear suspension
+    % damp; cf is the front wheel damp; cr is the rear suspension damp
+    
+    % front damp
+    c1LR = get_leverage_ratio('front', FSAE_Race_Car);
+    c1 = c1LR * FSAE_Race_Car.suspension_front.c * 12; % ft
+    
+    % rear damp
+    c2LR = get_leverage_ratio('rear', FSAE_Race_Car);
+    c2 = c2LR * FSAE_Race_Car.suspension_rear.c * 12; % ft
+    
+    % ASK ABOUT THE DAMPING MATRIX
+    
+    % matrix form 
+    C = [ c1+c2, -c1*lf+c2*lr; -c1*lf+c2*lr, c1*lf^2+c2*lr^2];
+    
+    
 elseif strcmp(ad4, vibration_model)
     % For half car 4 DOF
     
@@ -93,6 +110,29 @@ elseif strcmp(ad4, vibration_model)
     cg = get_cg(FSAE_Race_Car); % ft
     lf = cg; % ft
     lr = l - cg; % ft
+    
+    % note: c1 is the front suspension damp; c2 is the rear suspension
+    % damp; cf is the front wheel damp; cr is the rear suspension damp
+    
+     % front damp
+    c1LR = get_leverage_ratio('front', FSAE_Race_Car);
+    c1 = c1LR * FSAE_Race_Car.suspension_front.c * 12; % ft
+    
+    % rear damp
+    c2LR = get_leverage_ratio('rear', FSAE_Race_Car);
+    c2 = c2LR * FSAE_Race_Car.suspension_rear.c * 12; %ft
+    
+    % front wheel damp
+    cf = FSAE_Race_Car.wheel_front.c * 12; % ft
+    
+    % rear wheel damp
+    cr = FSAE_Race_Car.wheel_rear.c * 12; % ft
+    
+    % matrix form
+    C = [ c1+c2, -c1*lf+c2*lr, -c1, -c2;
+        -c1*lf+c2*lr, c1*lf^2+c2*lr^2, c1*lf, -c2*lr;
+        -c1, c1*lf, c1+cf, 0;
+        -c2, -c2*lr, 0, c2+cr];
     
     
 else
