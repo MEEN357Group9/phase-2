@@ -3,22 +3,31 @@ function z0 = get_static_deflection( vibration_model, FSAE_Race_Car )
 %vibration model
 % Inputs:
 %   vibration_model       Is a string indicating the desired vibration model
-%   FSAE_Race_car        Is a structure that has the data for quantifying 
-%                                        the mass matrix
+%   FSAE_Race_car         Is a structure that has the data for quantifying 
+%                              the mass matrix
 %
 % Outputs:
-%  C                               Is a matrix containing the appropiate
-%                                        damping in the appropriate places
+%  C                      Is a matrix containing the appropiate
+%                              damping in the appropriate places
+
+
+% valid inputs
+ad1 = 'quarter_car_1_DOF';
+ad2 = 'quarter_car_2_DOF';
+ad3 = 'half_car_2_DOF';
+ad4 = 'half_car_4_DOF';
 
 
 % input error checking
 if ~ischar(vibration_model) 
+    % the vibration model input is not a string
     error('vibration_model must be a string');
-elseif strcmp('quarter_car_1_DOF',vibration_model) || strcmp('quarter_car_2_DOF',...
-        vibration_model) 
-    
-elseif ~strcmp('quarter_car_1_DOF',vibration_model) && ~strcmp('quarter_car_2_DOF',...
-        vibration_model) 
+elseif strcmp(ad1,vibration_model) || strcmp(ad2,vibration_model) ...
+        || strcmp(ad3,vibration_model) || strcmp(ad4, vibration_model)
+    % all clear for run
+elseif ~strcmp(ad1,vibration_model) && ~strcmp(ad2,vibration_model) ...
+        && ~strcmp(ad3,vibration_model) && ~strcmp(ad4,vibration_model)
+    % not the proper string
     error('The string for vibration_model must be either ''quarter_car_1_DOF'' or  ''quarter_car_2_DOF''.');
     
 elseif ~isstruct(FSAE_Race_Car) 
@@ -26,6 +35,7 @@ elseif ~isstruct(FSAE_Race_Car)
 else
 end
 
+% actual calculation and composition
 if strcmp('quarter_car_1_DOF', vibration_model)
     % For 1 DOF
     % find the stiffness
@@ -43,7 +53,7 @@ if strcmp('quarter_car_1_DOF', vibration_model)
     
 elseif strcmp('quarter_car_2_DOF', vibration_model)
     % For 2 DOF
-        % find the stiffness
+    % find the stiffness
     K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
     % gives units of lb/ft
     % find the weight
@@ -57,6 +67,18 @@ elseif strcmp('quarter_car_2_DOF', vibration_model)
     % find z0
     z0 = K\W; % gives units of ft
        
+elseif strcmp(ad3, vibration_model)
+    % For half car 2 DOF
+    % find the stiffness
+    K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
+    % gives units of lb/ft
+    
+elseif strcmp(ad4, vibration_model)
+    % For half car 4 DOF
+    % find the stiffness
+    K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
+    % gives units of lb/ft
+    
 end
 
 end

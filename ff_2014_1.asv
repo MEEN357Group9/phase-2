@@ -1,0 +1,51 @@
+% Phase 2, Task 3a
+
+%clc; clear all; close all;
+
+% Load Data
+run car_2014.m
+run trajectory.m
+run speed_bump.m
+
+% Create the struct fields with which appropriate data will be paired
+field_2014_1_1 = 't_prev'; % Data managed by the trajectory integrator (sec)
+field_2014_1_2 = 'X_prev'; % Data managed by the trajectory integrator (ft)
+field_2014_1_3 = 'car'; % Race car being driven (ie FSAE_Race_Car)
+field_2014_1_4 = 'model'; % Vibration model (ie half_car_4_DOF)
+field_2014_1_5 = 'trajectory'; % A handle to any admissible trajectory function
+field_2014_1_6 = 't_in'; % Time upon entering the trajectory (sec)
+field_2014_1_7 = 't_out'; % Time when leaving the trajectory (sec)
+field_2014_1_8 = 'V_in'; % Velocity upon entering the trajectory (mph)
+field_2014_1_9 = 'V_out'; % Velocity when leaving the trajectory (mph)
+field_2014_1_10 = 'N'; % Number of time steps (ie h = [t_out - t_in]/N)
+field_2014_1_11 = 'roadway_d'; % A handle to any admissible roadway function traversed by driver side
+field_2014_1_12 = 'X_enter_d'; % Distance to engage the roadway waveform
+field_2014_1_13 = 'roadway_p'; % A handle to any admissible roadway function traversed by passenger side
+field_2014_1_14 = 'X_enter_p'; % Distance to engage the roadway waveform
+
+% Now call specific data or straight up structs to values for big struct
+value_2014_1_1 = 0;
+value_2014_1_2 = 0;
+value_2014_1_3 = FSAE_Race_Car;
+value_2014_1_4 = 'quarter_car_1_DOF';
+value_2014_1_5 = @trajectory;
+value_2014_1_6 = 0; % sec
+value_2014_1_7 = 1.5; % sec
+value_2014_1_8 = 5; %mph
+value_2014_1_9 = 5; % mph
+value_2014_1_10 = 2500; 
+value_2014_1_11 = @speed_bump;
+value_2014_1_12 = 1; % ft
+value_2014_1_13 = @speed_bump;
+value_2014_1_14 = 1; % ft
+
+% Now to set up the struct for the car
+ff_2014_1 = 
+
+
+%FSAE_Race_Car = struct(fieldn1, valuen1, fieldn2, valuen2, fieldn3, valuen3, fieldn4, valuen4, ... 
+    %fieldn5, valuen5, fieldn6, valuen6, fieldn7, valuen7, fieldn8, valuen8, fieldn9, valuen9, ...
+    fieldn10, valuen10, fieldn11, valuen11);
+
+
+
