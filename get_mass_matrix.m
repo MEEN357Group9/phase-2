@@ -39,10 +39,10 @@ if strcmp(ad1,vibration_model) == 1
     % M matrix for quarter car 1 DOF
     % excludes the mass of the wheel assembly
     % chassis weight plus driver weight plus motor weight divided by 4 for
-    % quarter car and then divided by 32.17 for slugs 
+    % quarter car and then divided by 32.2 for slugs 
     
     m = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight ...
-        + FSAE_Race_Car.power_plant.weight ) / 4 / 32.17 ; % slugs
+        + FSAE_Race_Car.power_plant.weight ) / 4 / 32.2 ; % slugs
     
     % matrix form 
     M = [m];
@@ -51,13 +51,13 @@ elseif strcmp(ad2,vibration_model) == 1
     % M matrix for quarter car 2 DOF
     % includes the mass of the wheel assembly
     % chassis weight plus driver weight plus motor weight divided by 4 for
-    % quarter car and then divided by 32.17 for slugs 
+    % quarter car and then divided by 32.2 for slugs 
     
     m = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight ...
-        + FSAE_Race_Car.power_plant.weight )/4 /32.17 ; % slugs
+        + FSAE_Race_Car.power_plant.weight )/4 /32.2 ; % slugs
     % average of the weight of the tires
     mw = ( FSAE_Race_Car.wheel_front.weight + FSAE_Race_Car.wheel_rear.weight )...
-        / 2 / 32.17; % slugs
+        / 2 / 32.2; % slugs
     
     % matrix form
     M = [m 0; 0 mw];
@@ -68,7 +68,7 @@ elseif strcmp(ad3, vibration_model) == 1
     % chassis weight plus driver weight plus motor weight divided by 2 for
     % half car and then divided by 32.17 for slugs 
     m = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight ...
-        + FSAE_Race_Car.power_plant.weight ) / 2 / 32.17 ; % slugs
+        + FSAE_Race_Car.power_plant.weight ) / 2 / 32.2 ; % slugs
     
     % the moment of interia
     J = get_Jy(FSAE_Race_Car); % slug ft^2
@@ -82,16 +82,16 @@ elseif strcmp(ad4, vibration_model) == 1
     % chassis weight plus driver weight plus motor weight divided by 2 for
     % half car and then divided by 32.17 for slugs 
     m = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight ...
-        + FSAE_Race_Car.power_plant.weight ) / 2 / 32.17 ; % slugs
+        + FSAE_Race_Car.power_plant.weight ) / 2 / 32.2 ; % slugs
     
     % the moment of interia 
     J = get_Jy(FSAE_Race_Car); % slug ft^2
     
     % front wheel mass 
-    mf = ( FSAE_Race_Car.wheel_front.weight ) / 32.17; % slugs
+    mf = ( FSAE_Race_Car.wheel_front.weight ) / 32.2; % slugs
     
     % rear wheel mass
-    mr = ( FSAE_Race_Car.wheel_rear.weight ) / 32.17; % slugs
+    mr = ( FSAE_Race_Car.wheel_rear.weight ) / 32.2; % slugs
     
     % mass matrix
     M = [m 0 0 0; 0 J 0 0; 0 0 mr 0; 0 0 0 mr];
