@@ -3,7 +3,7 @@
 clc; clear all; close all;
 
 % Load data that we need
-run car_2014.m
+run car_2016.m
 
 % Create the struct fields with which appropriate data will be paired
 field1 = 't_prev'; % Data managed by the trajectory integrator (sec)
@@ -25,16 +25,16 @@ field14 = 'X_enter_p'; % Distance to engage the roadway waveform
 value1 = 0;
 value2 = 0;
 value3 = FSAE_Race_Car;
-value4 = 'quarter_car_2_DOF';
+value4 = 'quarter_car_1_DOF';
 value5 = @trajectory;
 value6 = 0; % sec
-value7 = 1.5; % sec
-value8 = 5; %mph
-value9 = 5; % mph
+value7 = 1; % sec
+value8 = 60; %mph
+value9 = 60; % mph
 value10 = 2500; 
-value11 = @speed_bump;
+value11 = @tar_strip;
 value12 = 1; % ft
-value13 = @speed_bump;
+value13 = @tar_strip;
 value14 = 1; % ft
 
 % Now to set up the struct for the car
