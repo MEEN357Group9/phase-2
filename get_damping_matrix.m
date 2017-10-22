@@ -3,12 +3,12 @@ function C = get_damping_matrix( vibration_model, FSAE_Race_Car )
 %vibration model
 % Inputs:
 %   vibration_model       Is a string indicating the desired vibration model
-%   FSAE_Race_car        Is a structure that has the data for quantifying 
-%                                        the mass matrix
+%   FSAE_Race_car         Is a structure that has the data for quantifying 
+%                                 the mass matrix
 %
 % Outputs:
-%  C                               Is a matrix containing the appropiate
-%                                        damping in the appropriate places
+%  C                      Is a matrix containing the appropiate
+%                                 damping in the appropriate places
 
 
 % valid inputs
@@ -35,6 +35,7 @@ elseif ~isstruct(FSAE_Race_Car)
 else
 end
 
+% actual calculation and composition
 if strcmp('quarter_car_1_DOF', vibration_model)
     % For quarter car 1 DOF
     % For front suspension
@@ -47,7 +48,7 @@ if strcmp('quarter_car_1_DOF', vibration_model)
     
     % Average damping
     avgC = (CF + CR)/2*12; % gives units of lb/(ft/sec)
-    C = [ avgC 0; 0 0];
+    C = [ avgC ];
     
     
 elseif strcmp('quarter_car_2_DOF', vibration_model)
@@ -132,7 +133,7 @@ elseif strcmp(ad4, vibration_model)
     C = [ c1+c2, -c1*lf+c2*lr, -c1, -c2;
         -c1*lf+c2*lr, c1*lf^2+c2*lr^2, c1*lf, -c2*lr;
         -c1, c1*lf, c1+cf, 0;
-        -c2, -c2*lr, 0, c2+cr];
+        -c2, -c2*lr, 0, c2+cr]; % in lb/(ft/sec) and ft*lb/(rad/sec)
     
     
 else
