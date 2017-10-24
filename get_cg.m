@@ -22,9 +22,9 @@ mx_chassis = (FSAE_Race_Car.chassis.weight)/32.2*... %weight in slugs
 mx_motor = (FSAE_Race_Car.power_plant.weight)/32.2*... %weight in slugs
     (FSAE_Race_Car.chassis.motor_X); %distance
 mx_pilot_torso = (0.6*FSAE_Race_Car.pilot.weight)/32.2*... %weight in slugs
-    ((FSAE_Race_Car.pilot.girth/(2*pi))+FSAE_Race_Car.chassis.seat_X); %distance
+    (-(FSAE_Race_Car.pilot.girth/(2*pi))+FSAE_Race_Car.chassis.seat_X); %distance
 mx_pilot_legs = (0.4*FSAE_Race_Car.pilot.weight)/32.2*... %weight in slugs
-    (0.6*FSAE_Race_Car.pilot.height/2+FSAE_Race_Car.chassis.seat_X); %distance
+    (-0.6*FSAE_Race_Car.pilot.height/2+FSAE_Race_Car.chassis.seat_X); %distance
 
 %takes the sums of mx and the sum of the total weight
 mx_sum = mx_chassis + mx_motor + mx_pilot_legs + mx_pilot_torso; %takes the sum of all the weightes times their corresponding distances

@@ -73,6 +73,10 @@ elseif strcmp(ad3, vibration_model)
     K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
     % gives units of lb/ft
     
+     % find the weight
+    w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
+        FSAE_Race_Car.power_plant.weight) / 4;
+    
 elseif strcmp(ad4, vibration_model)
     % For half car 4 DOF
     % find the stiffness
