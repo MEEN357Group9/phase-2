@@ -41,9 +41,9 @@ if strcmp('quarter_car_1_DOF', vibration_model)
     % find the stiffness
     K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
     % K is in K(1)
-    % gives units of lb/ft
+    % gives units of lbf/ft
     
-    % find the weight
+    % find the weight (quarter)
     w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
         FSAE_Race_Car.power_plant.weight) / 4;
     
@@ -55,8 +55,9 @@ elseif strcmp('quarter_car_2_DOF', vibration_model)
     % For 2 DOF
     % find the stiffness
     K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
-    % gives units of lb/ft
-    % find the weight
+    % gives units of lbf/ft
+    
+    % find the weight (quarter)
     w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
         FSAE_Race_Car.power_plant.weight) / 4;
     
@@ -71,17 +72,35 @@ elseif strcmp(ad3, vibration_model)
     % For half car 2 DOF
     % find the stiffness
     K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
-    % gives units of lb/ft
+    % gives units of lbf/ft
     
-     % find the weight
+    % find the weight (half)
     w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
-        FSAE_Race_Car.power_plant.weight) / 4;
+        FSAE_Race_Car.power_plant.weight) / 2; % lbf
+    
+    W = [ W ; 0 ]; % gives lbf
+    
+    z0 = K/W; % ft 
     
 elseif strcmp(ad4, vibration_model)
     % For half car 4 DOF
     % find the stiffness
     K = get_stiffness_matrix(vibration_model, FSAE_Race_Car);
-    % gives units of lb/ft
+    % gives units of lbf/ft or ft lbf/rad
+    
+    % find the weight (half)
+    w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
+        FSAE_Race_Car.power_plant.weight) / 2; % lbf
+    
+    % front wheel weight
+    wf = FSAE_Race_Car.wheel_front.weight; % lbf
+    
+    % rear wheel weight
+    wr = FSAE_Race_Car.wheel_rear.weight; % lbf
+    
+    W = [ w ; 0 ; wf ; wr ];
+    
+    z0 = K\W; % ft or rad
     
 end
 
