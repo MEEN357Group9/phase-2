@@ -16,4 +16,4 @@ leg_length=FSAE_Race_Car.pilot.height*.6/12; %the length of the drivers legs in 
 body_length=FSAE_Race_Car.pilot.height*.4/12; %length of the rest of the drivers body in ft. 
 leg_weight=FSAE_Race_Car.pilot.weight*.4/32.2; %weight of the drivers legs in slugs.
 body_weight=FSAE_Race_Car.pilot.weight*.6/32.2; %weight of the rest of the drivers body in slugs.
-leg_displacement=FSAE_Race_Car.chassis.seat_X/12-leg_length; %Center line of the legs.
+body_displacement=FSAE_Race_Car
