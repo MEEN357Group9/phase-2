@@ -17,3 +17,10 @@ body_length=FSAE_Race_Car.pilot.height*.4/12; %length of the rest of the drivers
 leg_weight=FSAE_Race_Car.pilot.weight*.4/32.2; %weight of the drivers legs in slugs.
 body_weight=FSAE_Race_Car.pilot.weight*.6/32.2; %weight of the rest of the drivers body in slugs.
 leg_displacement=FSAE_Race_Car.chassis.seat_X/12-leg_length; %Center line of the legs.
+r=FSAE_Race_Car.pilot.girth/(2*pi)/12; %determinig the radius in ft.
+i_leg_self=1/12*body_weight*(3*r^2+leg_length^2); %moment of inertia about itself.
+i_leg_cg=i_leg_self+leg_weight*(abs(leg_displacement-cg))^2; %Moment of inertia about center of gravity.
+body_displacement=FSAE_Race_Car.chassis.seat_X/12-r; %finding the centerline of the body cylinder.
+i_body_self=.5*body_weight*r^2; %Moment of inertia about its center line.
+i_body_cg=i_body_self+body_weight*(abs(body_displacement-cg))^2; %Moment of inertia about the center of gravity.
+%% Chassiss
