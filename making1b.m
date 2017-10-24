@@ -24,3 +24,11 @@ body_displacement=FSAE_Race_Car.chassis.seat_X/12-r; %finding the centerline of 
 i_body_self=.5*body_weight*r^2; %Moment of inertia about its center line.
 i_body_cg=i_body_self+body_weight*(abs(body_displacement-cg))^2; %Moment of inertia about the center of gravity.
 %% Chassiss
+r_chassie=FSAE_Race_Car.chassis.diameter/24; %Finding the radius of the chassis in feet.
+m_chassis=FSAE_Race_Car.chassis.weight/32.2; %Mass of the chassis in slugs.
+l_chassis=FSAE_Race_Car.chassis.length/12; %Length of the chassis in ft.
+cg_chassis=FSAE_Race_Car.chassis.cg_X/12; %Center of gravity in ft.
+i_chassis_self=1/12*m_chassis*(6*r_chassie^2+l_chassis^2); %Moment of inertia about its own center of gravity.
+i_chassis_cg=i_chassis_self+m_chassis*(abs(cg_chassis-cg))^2; %Moment of inertia about the center of gravity. 
+%% Total
+Jy=i_motor_cg+i_leg_cg+i_body_cg+i_chassis_cg; %Summing the moments of inertias. 
