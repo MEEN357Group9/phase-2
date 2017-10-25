@@ -16,7 +16,39 @@ function [FF, ff_data] = get_forcing_function(t,ff_data)
     ff_data.X_enter_p, X, V)
 
 
+%To get forcing function
+switch ff_data.model 
+    case 'quarter_car_1_DOF'
+        
+        
+        
+        
+    case 'quarter_car_2_DOF'
+        
+        
+        
+        
+       
+    case 'half_car_2_DOF'
+        
+        
+        
+        
+        
+    case 'half_car_4_DOF'
+        
+        
+        
+        
+        
+end
 
+    
+    
+    
+    
+    
+    
 ff_data.t_prev = t;
 ff_data.X_prev = X;
 
