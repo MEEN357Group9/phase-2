@@ -1,6 +1,14 @@
 function [Jy] = get_Jy(FSAE_Race_Car)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%Get_Jy This function takes the center of gravity as well as the data
+%structor FSAE_Race_Car and produces the moment of inertia about the Y
+%axis.
+       %Import:
+            %FSAE_Race_Car is a data structor.
+        %Output:
+            %Jy is the moment of inertia about the Y axis. 
+            
+            
+%Importing the center of gravity. 
 cg=get_cg(FSAE_Race_Car);
 %Finding Moment of inertial of the motor
 %% Motor
