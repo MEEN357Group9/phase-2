@@ -15,9 +15,16 @@ function [FF, ff_data] = get_forcing_function(t,ff_data)
 [R_f_p, R_r_p, dRdt_f_p, dRdt_r_p] =  ff_data.roadway_p(ff_data.car.chassis.wheelbase/12,...
     ff_data.X_enter_p, X, V)
 
-FF
 
+%To get forcing function
+switch ff_data.model 
 
+    
+    
+    
+    
+    
+    
 ff_data.t_prev = t;
 ff_data.X_prev = X;
 
