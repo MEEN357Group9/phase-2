@@ -30,10 +30,12 @@ switch ff_data.model
             +FSAE_Race_Car.power_plant.weight)/4; %One forth the weight of the car in lbf.
         
         % front damping ratio
-        c=FSAE_Race_Car.suspension_front.c/12; % ft
+        c1LR = get_leverage_ratio('front', FSAE_Race_Car);
+        c=c1LR * FSAE_Race_Car.suspension_front.c*12; % ft
         
         % front spring constant
-        k=FSAE_Race_Car.suspension_front.k/12; % ft
+        k1LR = get_leverage_ratio('front', FSAE_Race_Car);
+        k=k1LR*FSAE_Race_Car.suspension_front.k*12; % ft
         
         % getting the lengths
         cg = get_cg(FSAE_Race_Car); % ft
