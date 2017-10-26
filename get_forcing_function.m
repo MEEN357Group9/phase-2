@@ -24,7 +24,8 @@ switch ff_data.model
         
         
     case 'quarter_car_2_DOF'
-        
+  w=(FSAE_Race_Car.Chassis.weight+FSAE_Race_Car.pilot.weight+FSAE_Race_Car.power_plant.weight)/4; %One forth the weight of the car. 
+  c=FSAE_Race_
         
         
         
