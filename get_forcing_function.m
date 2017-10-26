@@ -24,12 +24,24 @@ switch ff_data.model
         
         
     case 'quarter_car_2_DOF'
-  w=(FSAE_Race_Car.Chassis.weight+FSAE_Race_Car.pilot.weight+FSAE_Race_Car.power_plant.weight)/4; %One forth the weight of the car. 
-  c=FSAE_Race_
+        %For quater car 2 DOF
+        %This is for the front half of the qauter car. 
+        w=(FSAE_Race_Car.chassis.weight+FSAE_Race_Car.pilot.weight...
+            +FSAE_Race_Car.power_plant.weight)/4; %One forth the weight of the car in lbf.
         
+        % front damping ratio
+        c=FSAE_Race_Car.suspension_front.c/12; % ft
         
+        % front spring constant
+        k=FSAE_Race_Car.suspension_front.k/12; % ft
         
-       
+        % getting the lengths
+        cg = get_cg(FSAE_Race_Car); % ft
+        lf = cg; % ft
+        
+        % forcing function matrix 
+        FF=[w-c*dRdt_f_d-R_f_d*k;...
+           c*lf*dRdt_f_d+lf*R_f_d*k];
     case 'half_car_2_DOF'
         % For half car 2 DOF
         % For driver only
