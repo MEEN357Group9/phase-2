@@ -25,7 +25,7 @@ switch ff_data.model
         
     case 'quarter_car_2_DOF'
         %For quater car 2 DOF
-        %This is for the front half of the qauter car. 
+        %This is for the front half of the quarter car. 
         w=(FSAE_Race_Car.chassis.weight+FSAE_Race_Car.pilot.weight...
             +FSAE_Race_Car.power_plant.weight)/4; %One forth the weight of the car in lbf.
         
