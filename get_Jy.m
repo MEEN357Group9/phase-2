@@ -59,6 +59,6 @@ i_chassis_cg=i_chassis_self+m_chassis*(abs(cg_chassis-cg))^2; %Moment of inertia
 
 
 %% Total
-Jy=i_motor_cg+i_leg_cg+i_body_cg+i_chassis_cg; %Summing the moments of inertias. 
+Jy=(i_motor_cg+i_leg_cg+i_body_cg+i_chassis_cg)/2; %Summing the moments of inertias. 
 end
 
