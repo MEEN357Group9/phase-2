@@ -35,7 +35,7 @@ body_weight=FSAE_Race_Car.pilot.weight*.6/32.2; %weight of the rest of the drive
 leg_displacement=FSAE_Race_Car.chassis.seat_X/12-leg_length/2; %Center line of the legs.
 r=FSAE_Race_Car.pilot.girth/(2*pi)/12; %determinig the radius in ft.
 
-i_leg_self=1/12*leg_weight*(3*r^2+leg_length^2); %moment of inertia about itself.
+i_leg_self=1/12*body_weight*(3*r^2+leg_length^2); %moment of inertia about itself.
 
 i_leg_cg=i_leg_self+leg_weight*(abs(leg_displacement-cg))^2; %Moment of inertia about center of gravity.
 
