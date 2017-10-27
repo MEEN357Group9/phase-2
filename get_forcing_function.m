@@ -26,24 +26,19 @@ switch ff_data.model
     case 'quarter_car_2_DOF'
         %For quater car 2 DOF
         %This is for the front half of the quarter car. 
-        w=(FSAE_Race_Car.chassis.weight+FSAE_Race_Car.pilot.weight...
-            +FSAE_Race_Car.power_plant.weight)/4; %One forth the weight of the car in lbf.
+        ww=(ff_data.car.wheel_front.weight+ff_data.car.wheel_back.weight)/2;
+        w=(ff_data.car.chassis.weight+ff_data.car.pilot.weight...
+            +ff_data.car.power_plant.weight)/4; %One forth the weight of the car in lbf.
         
         % front damping ratio
-        c1LR = get_leverage_ratio('front', FSAE_Race_Car);
-        c=c1LR * FSAE_Race_Car.suspension_front.c*12; % ft
+        c=(ff_data.car.wheel_front.c+ff_data.car.wheel_back.c)/2*12; % ft
         
         % front spring constant
-        k1LR = get_leverage_ratio('front', FSAE_Race_Car);
-        k=k1LR*FSAE_Race_Car.suspension_front.k*12; % ft
-        
-        % getting the lengths
-        cg = get_cg(FSAE_Race_Car); % ft
-        lf = cg; % ft
-        
+        k=(ff_data.car.wheel_front.k+ff_data.car.wheel_back.k)/2*12; % ft
+
         % forcing function matrix 
-        FF=[w-c*dRdt_f_d-R_f_d*k;...
-           c*lf*dRdt_f_d+lf*R_f_d*k];
+        FF=[w;...
+           ww-c*dRdt_f_d-k*R_f_d];
     case 'half_car_2_DOF'
         % For half car 2 DOF
         % For driver only
