@@ -80,19 +80,36 @@ switch ff_data.model
         
         
     case 'half_car_4_DOF'
+        % For Half Car 4 DOF
+        % For Driver Only
+        w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
+        FSAE_Race_Car.power_plant.weight) / 2; % lbf
         
+        % Wheel Weight
+        wf = FSAE_Race_Car.wheel_front.weight; % lbf
+        wr = FSAE_Race_Car.wheel_rear.weight; % lbf
         
+        % Front Damp
+        c1LR = get_leverage_ratio('front', FSAE_Race_Car);
+        c1 = c1LR * FSAE_Race_Car.suspension_front.c * 12; % ft
+    
+        % Rear Damp
+        c2LR = get_leverage_ratio('rear', FSAE_Race_Car);
+        c2 = c2LR * FSAE_Race_Car.suspension_rear.c * 12; %ft
         
-        
-        
+        % For Front Stiffness
+        k1LR = get_leverage_ratio('front', FSAE_Race_Car);
+        k1 = k1LR * FSAE_Race_Car.suspension_front.k * 12; % ft
+    
+        % For Rear Stiffness
+        k2LR = get_leverage_ratio('rear', FSAE_Race_Car);
+        k2 = k2LR * FSAE_Race_Car.suspension_rear.k * 12; % ft
+       
+        % Forcing Function Matrix
+        FF = [w ; 0 ; wf - c1*dRdt_f_d - k1*R_f_d ; wr - c2*dRdt_r_d - k2*R_r_d];
+
 end
 
-    
-    
-    
-    
-    
-    
 ff_data.t_prev = t;
 ff_data.X_prev = X;
 
