@@ -1,6 +1,21 @@
 function [FF, ff_data] = get_forcing_function(t,ff_data)
+%This function returns the forcing function of a car given the car data and
+%vibration model and updates the data structure to pass back in the next
+%call
+% Inputs:
+%   t                     Time
+%   ff_data               Data Structure
+%
+% Outputs:
+%   FF                    Is a matrix containing the appropiate
+%                              forcing functions acting on the car
+%   ff_data               Updated data structure containing new 
+%                              t and X values
 
 
+if ~isstruct(ff_data) 
+    error('ff_data must be a structure')
+end
 
 
 [t,X,V] = ff_data.trajectory(ff_data.t_prev, ff_data.X_prev,...
@@ -19,9 +34,11 @@ function [FF, ff_data] = get_forcing_function(t,ff_data)
 %To get forcing function
 switch ff_data.model 
     case 'quarter_car_1_DOF'
-        
-        
-        
+        %For quater car 1 DOF
+        w=(ff_data.car.chassis.weight+ff_data.car.pilot.weight...
+            +ff_data.car.power_plant.weight)/4;
+        %Forcing function only due to weight
+        FF = w;
         
     case 'quarter_car_2_DOF'
         %For quater car 2 DOF
@@ -71,9 +88,7 @@ switch ff_data.model
         FF = [ w - dRdt_f_d*c1 - dRdt_r_d*c2 - R_f_d*k1 - R_r_d*k2;
             c1*lf*dRdt_f_d - lr*dRdt_r_d*c2 + lf*R_f_d*k1 -lr*R_r_d*k2];
         
-        
-        
-        
+               
     case 'half_car_4_DOF'
         % For Half Car 4 DOF
         % For Driver Only
