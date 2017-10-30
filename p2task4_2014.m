@@ -11,7 +11,7 @@
 %close all;
 
 
-ff_2014_1 
+run ff_2016_1;
 
 D = ff_data;
 FN = @(t, D) get_forcing_function(t, D);
@@ -26,5 +26,8 @@ K = get_stiffness_matrix(D.model, D.car);
 [T, X, V, A] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 plot(T,X)
+xlim([0 1])
+ylim([0 0.7])
+
 
 
