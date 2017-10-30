@@ -1,3 +1,4 @@
+%test
 % p2task4  Drives the  2016 Texas A&M race car of Phase 1 over the
 % speed bump roadway using forcing-function data structures f_2016_1, f_2014_2, f_2014_3
 % and f_2016_4.
@@ -80,7 +81,7 @@ title('Displacements: Heave of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Displacement [ft]')
 legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
-    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
 plot(T1,V1(:,1),'k', T2,V2(:,1),'r', T3,V3(:,1), 'b', T4,V4(:,1), 'g')
@@ -88,7 +89,7 @@ title('Velocities: Heave of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Velocity [ft/s]')
 legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
-    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
 plot(T1,A1(:,1),'k', T2,A2(:,1),'r', T3,A3(:,1), 'b', T4,A4(:,1), 'g')
@@ -96,7 +97,7 @@ title('Accelerations: Heave of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Acceleration [ft/s^2]')
 legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
-    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 % pitch (uses cars 3,4)
 figure
@@ -105,44 +106,44 @@ plot(T3,X3(:,2), 'b', T4,X4(:,2), 'g')
 title('Rotation: Pitch of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Rotation [deg]')
-legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
 plot(T3,V3(:,2), 'b', T4,V4(:,2), 'g')
 title('Spin: Pitch of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Rotation [deg/s]')
-legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
 plot(T3,A3(:,2), 'b', T4,A4(:,2), 'g')
 title('Rate of Spin: Pitch of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Rotation [deg/s^2]')
-legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 % front wheel motion ( uses cars 2,4)
 figure
 subplot(3,1,1)
-plot(T2,X2(:,3), 'b', T4,X4(:,3), 'g')
+plot(T2,X2(:,2), 'b', T4,X4(:,3), 'g')
 title('Displacements: Front Axle of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Displacement [ft]')
-legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
-plot(T2,V2(:,3), 'b', T4,V4(:,3), 'g')
+plot(T2,V2(:,2), 'b', T4,V4(:,3), 'g')
 title('Velocities: Front Axle of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Velocity [ft/s]')
-legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
-plot(T2,A2(:,3), 'b', T4,A4(:,3), 'g')
+plot(T2,A2(:,2), 'b', T4,A4(:,3), 'g')
 title('Accelerations: Front Axle of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Acceleration [ft/s^2]')
-legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 % rear wheel motion ( uses car 4)
 figure
@@ -151,21 +152,19 @@ plot(T4,X4(:,4), 'g')
 title('Displacements: Front Axle of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Displacement [ft]')
-legend('1/2 car 4 DOF', 'location', 'best')
+legend('1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
 plot( T4,V4(:,4), 'g')
 title('Velocities: Front Axle of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Velocity [ft/s]')
-legend('1/2 car 4 DOF', 'location', 'best')
+legend('1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
 plot(T4,A4(:,4), 'g')
 title('Accelerations: Front Axle of a Car Hitting a Tar Strip')
 xlabel('Time [s]')
 ylabel('Acceleration [ft/s^2]')
-legend('1/2 car 4 DOF', 'location', 'best')
+legend('1/2 car 4 DOF', 'location', 'northeast')
 
-xlim([0 1])
-ylim([0 0.07])
