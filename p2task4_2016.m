@@ -72,5 +72,100 @@ K = get_stiffness_matrix(D.model, D.car);
 
 % 4 figures each with 3 plots 
 
+% heave (uses cars 1,2,3,4)
+figure
+subplot(3,1,1)
+plot(T1,X1(:,1),'k', T2,X2(:,1),'r', T3,X3(:,1), 'b', T4,X4(:,1), 'g')
+title('Displacements: Heave of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Displacement [ft]')
+legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
+    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,2)
+plot(T1,V1(:,1),'k', T2,V2(:,1),'r', T3,V3(:,1), 'b', T4,V4(:,1), 'g')
+title('Velocities: Heave of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Velocity [ft/s]')
+legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
+    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,3)
+plot(T1,A1(:,1),'k', T2,A2(:,1),'r', T3,A3(:,1), 'b', T4,A4(:,1), 'g')
+title('Accelerations: Heave of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Acceleration [ft/s^2]')
+legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
+    '1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+% pitch (uses cars 3,4)
+figure
+subplot(3,1,1)
+plot(T3,X3(:,2), 'b', T4,X4(:,2), 'g')
+title('Rotation: Pitch of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Rotation [deg]')
+legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,2)
+plot(T3,V3(:,2), 'b', T4,V4(:,2), 'g')
+title('Spin: Pitch of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Rotation [deg/s]')
+legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,3)
+plot(T3,A3(:,2), 'b', T4,A4(:,2), 'g')
+title('Rate of Spin: Pitch of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Rotation [deg/s^2]')
+legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+% front wheel motion ( uses cars 2,4)
+figure
+subplot(3,1,1)
+plot(T2,X2(:,3), 'b', T4,X4(:,3), 'g')
+title('Displacements: Front Axle of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Displacement [ft]')
+legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,2)
+plot(T2,V2(:,3), 'b', T4,V4(:,3), 'g')
+title('Velocities: Front Axle of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Velocity [ft/s]')
+legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,3)
+plot(T2,A2(:,3), 'b', T4,A4(:,3), 'g')
+title('Accelerations: Front Axle of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Acceleration [ft/s^2]')
+legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'best')
+
+% rear wheel motion ( uses car 4)
+figure
+subplot(3,1,1)
+plot(T4,X4(:,4), 'g')
+title('Displacements: Front Axle of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Displacement [ft]')
+legend('1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,2)
+plot( T4,V4(:,4), 'g')
+title('Velocities: Front Axle of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Velocity [ft/s]')
+legend('1/2 car 4 DOF', 'location', 'best')
+
+subplot(3,1,3)
+plot(T4,A4(:,4), 'g')
+title('Accelerations: Front Axle of a Car Hitting a Tar Strip')
+xlabel('Time [s]')
+ylabel('Acceleration [ft/s^2]')
+legend('1/2 car 4 DOF', 'location', 'best')
+
 xlim([0 1])
 ylim([0 0.07])

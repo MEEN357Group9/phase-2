@@ -78,9 +78,9 @@ elseif strcmp(ad3, vibration_model)
     w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
         FSAE_Race_Car.power_plant.weight) / 2; % lbf
     
-    W = [ W ; 0 ]; % gives lbf
+    W = [ w ; 0 ]; % gives lbf
     
-    z0 = K/W; % ft 
+    z0 = K\W; % ft 
     
 elseif strcmp(ad4, vibration_model)
     % For half car 4 DOF

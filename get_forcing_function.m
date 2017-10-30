@@ -62,7 +62,7 @@ switch ff_data.model
         
         
         %Forcing function 
-        FF = [w - c*dRdt_f_d - k*R_f_d];
+        FF = [(w - c*dRdt_f_d - k*R_f_d)];
         
     case 'quarter_car_2_DOF'
         %For quater car 2 DOF
@@ -109,8 +109,8 @@ switch ff_data.model
         lr = l - cg; % ft
         
         % Forcing function matrix
-        FF = [ w - dRdt_f_d*c1 - dRdt_r_d*c2 - R_f_d*k1 - R_r_d*k2;
-            c1*lf*dRdt_f_d - lr*dRdt_r_d*c2 + lf*R_f_d*k1 -lr*R_r_d*k2];
+        FF = [ (w - dRdt_f_d*c1 - dRdt_r_d*c2 - R_f_d*k1 - R_r_d*k2);
+            (c1*lf*dRdt_f_d - lr*dRdt_r_d*c2 + lf*R_f_d*k1 -lr*R_r_d*k2)];
         
                
     case 'half_car_4_DOF'
@@ -140,7 +140,7 @@ switch ff_data.model
         k2 = k2LR * ff_data.car.suspension_rear.k * 12; % ft
        
         % Forcing Function Matrix
-        FF = [w ; 0 ; wf - c1*dRdt_f_d - k1*R_f_d ; wr - c2*dRdt_r_d - k2*R_r_d];
+        FF = [w ; 0 ; (wf - c1*dRdt_f_d - k1*R_f_d) ; (wr - c2*dRdt_r_d - k2*R_r_d)];
 
 end
 
