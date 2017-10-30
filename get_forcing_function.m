@@ -39,23 +39,23 @@ switch ff_data.model
             +ff_data.car.power_plant.weight)/4;
         
         % For front suspension
-        LRF = get_leverage_ratio('front', FSAE_Race_Car);
-        CF = LRF * FSAE_Race_Car.suspension_front.c;
+        LRF = get_leverage_ratio('front', ff_data.car);
+        CF = LRF * ff_data.car.suspension_front.c;
     
         % For rear suspension
-        LRR = get_leverage_ratio('rear', FSAE_Race_Car);
-        CR = LRR * FSAE_Race_Car.suspension_rear.c;
+        LRR = get_leverage_ratio('rear', ff_data.car);
+        CR = LRR * ff_data.car.suspension_rear.c;
     
         % Average damping
         c = (CF + CR)/2*12; % gives units of lb/(ft/sec)
     
          % For front suspension
-        LRFK = get_leverage_ratio('front', FSAE_Race_Car);
-        KF = LRFK * FSAE_Race_Car.suspension_front.k;
+        LRFK = get_leverage_ratio('front', ff_data.car);
+        KF = LRFK * ff_data.car.suspension_front.k;
     
         % For rear suspension
-        LRRK = get_leverage_ratio('rear', FSAE_Race_Car);
-        KR = LRRK * FSAE_Race_Car.suspension_rear.k;
+        LRRK = get_leverage_ratio('rear', ff_data.car);
+        KR = LRRK * ff_data.car.suspension_rear.k;
     
         % Average damping
         k = (KF + KR)/2*12; % gives units of lb/ft
@@ -83,28 +83,28 @@ switch ff_data.model
     case 'half_car_2_DOF'
         % For half car 2 DOF
         % For driver only
-        w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
-        FSAE_Race_Car.power_plant.weight) / 2; % lbf
+        w = ( ff_data.car.chassis.weight + ff_data.car.pilot.weight + ...
+        ff_data.car.power_plant.weight) / 2; % lbf
         
         % front damp
-        c1LR = get_leverage_ratio('front', FSAE_Race_Car);
-        c1 = c1LR * FSAE_Race_Car.suspension_front.c * 12; % ft
+        c1LR = get_leverage_ratio('front', ff_data.car);
+        c1 = c1LR * ff_data.car.suspension_front.c * 12; % ft
     
         % rear damp
-        c2LR = get_leverage_ratio('rear', FSAE_Race_Car);
-        c2 = c2LR * FSAE_Race_Car.suspension_rear.c * 12; %ft
+        c2LR = get_leverage_ratio('rear', ff_data.car);
+        c2 = c2LR * ff_data.car.suspension_rear.c * 12; %ft
         
         % For front stiffness
-        k1LR = get_leverage_ratio('front', FSAE_Race_Car);
-        k1 = k1LR * FSAE_Race_Car.suspension_front.k * 12; % ft
+        k1LR = get_leverage_ratio('front', ff_data.car);
+        k1 = k1LR * ff_data.car.suspension_front.k * 12; % ft
     
         % For rear stiffness
-        k2LR = get_leverage_ratio('rear', FSAE_Race_Car);
-        k2 = k2LR * FSAE_Race_Car.suspension_rear.k * 12; % ft
+        k2LR = get_leverage_ratio('rear', ff_data.car);
+        k2 = k2LR * ff_data.car.suspension_rear.k * 12; % ft
         
         % getting the lengths 
-        l = FSAE_Race_Car.chassis.length;
-        cg = get_cg(FSAE_Race_Car); % ft
+        l = ff_data.car.chassis.length;
+        cg = get_cg(ff_data.car); % ft
         lf = cg; % ft
         lr = l - cg; % ft
         
@@ -116,28 +116,28 @@ switch ff_data.model
     case 'half_car_4_DOF'
         % For Half Car 4 DOF
         % For Driver Only
-        w = ( FSAE_Race_Car.chassis.weight + FSAE_Race_Car.pilot.weight + ...
-        FSAE_Race_Car.power_plant.weight) / 2; % lbf
+        w = ( ff_data.car.chassis.weight + ff_data.car.pilot.weight + ...
+        ff_data.car.power_plant.weight) / 2; % lbf
         
         % Wheel Weight
-        wf = FSAE_Race_Car.wheel_front.weight; % lbf
-        wr = FSAE_Race_Car.wheel_rear.weight; % lbf
+        wf = ff_data.car.wheel_front.weight; % lbf
+        wr = ff_data.car.wheel_rear.weight; % lbf
         
         % Front Damp
-        c1LR = get_leverage_ratio('front', FSAE_Race_Car);
-        c1 = c1LR * FSAE_Race_Car.suspension_front.c * 12; % ft
+        c1LR = get_leverage_ratio('front', ff_data.car);
+        c1 = c1LR * ff_data.car.suspension_front.c * 12; % ft
     
         % Rear Damp
-        c2LR = get_leverage_ratio('rear', FSAE_Race_Car);
-        c2 = c2LR * FSAE_Race_Car.suspension_rear.c * 12; %ft
+        c2LR = get_leverage_ratio('rear', ff_data.car);
+        c2 = c2LR * ff_data.car.suspension_rear.c * 12; %ft
         
         % For Front Stiffness
-        k1LR = get_leverage_ratio('front', FSAE_Race_Car);
-        k1 = k1LR * FSAE_Race_Car.suspension_front.k * 12; % ft
+        k1LR = get_leverage_ratio('front', ff_data.car);
+        k1 = k1LR * ff_data.car.suspension_front.k * 12; % ft
     
         % For Rear Stiffness
-        k2LR = get_leverage_ratio('rear', FSAE_Race_Car);
-        k2 = k2LR * FSAE_Race_Car.suspension_rear.k * 12; % ft
+        k2LR = get_leverage_ratio('rear', ff_data.car);
+        k2 = k2LR * ff_data.car.suspension_rear.k * 12; % ft
        
         % Forcing Function Matrix
         FF = [w ; 0 ; wf - c1*dRdt_f_d - k1*R_f_d ; wr - c2*dRdt_r_d - k2*R_r_d];
