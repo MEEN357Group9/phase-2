@@ -37,21 +37,45 @@ switch ff_data.model
         %For quater car 1 DOF
         w=(ff_data.car.chassis.weight+ff_data.car.pilot.weight...
             +ff_data.car.power_plant.weight)/4;
-        %Forcing function only due to weight
-        FF = w;
+        
+        % For front suspension
+        LRF = get_leverage_ratio('front', FSAE_Race_Car);
+        CF = LRF * FSAE_Race_Car.suspension_front.c;
+    
+        % For rear suspension
+        LRR = get_leverage_ratio('rear', FSAE_Race_Car);
+        CR = LRR * FSAE_Race_Car.suspension_rear.c;
+    
+        % Average damping
+        c = (CF + CR)/2*12; % gives units of lb/(ft/sec)
+    
+         % For front suspension
+        LRFK = get_leverage_ratio('front', FSAE_Race_Car);
+        KF = LRFK * FSAE_Race_Car.suspension_front.k;
+    
+        % For rear suspension
+        LRRK = get_leverage_ratio('rear', FSAE_Race_Car);
+        KR = LRRK * FSAE_Race_Car.suspension_rear.k;
+    
+        % Average damping
+        k = (KF + KR)/2*12; % gives units of lb/ft
+        
+        
+        %Forcing function 
+        FF = [w - c*dRdt_f_d - k*R_f_d];
         
     case 'quarter_car_2_DOF'
         %For quater car 2 DOF
         %This is for the front half of the quarter car. 
-        ww=(ff_data.car.wheel_front.weight+ff_data.car.wheel_back.weight)/2;
+        ww=(ff_data.car.wheel_front.weight+ff_data.car.wheel_rear.weight)/2;
         w=(ff_data.car.chassis.weight+ff_data.car.pilot.weight...
             +ff_data.car.power_plant.weight)/4; %One forth the weight of the car in lbf.
         
         % front damping ratio
-        c=(ff_data.car.wheel_front.c+ff_data.car.wheel_back.c)/2*12; % ft
+        c=(ff_data.car.wheel_front.c+ff_data.car.wheel_rear.c)/2*12; % ft
         
         % front spring constant
-        k=(ff_data.car.wheel_front.k+ff_data.car.wheel_back.k)/2*12; % ft
+        k=(ff_data.car.wheel_front.k+ff_data.car.wheel_rear.k)/2*12; % ft
 
         % forcing function matrix 
         FF=[w;...
