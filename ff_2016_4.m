@@ -1,6 +1,5 @@
 % Phase 2, Task 3a
 
-clc; clear all; close all;
 
 % Load data that we need
 run car_2016.m
