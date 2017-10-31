@@ -1,4 +1,4 @@
-clc; clear all; close all;
+
 
 % First we load in all the data we need
 run driver_tom.m
