@@ -47,7 +47,7 @@ if strcmp('quarter_car_1_DOF', vibration_model)
     
     % Average damping
     avgK = (KF + KR)/2*12; % gives units of lb/ft
-    K = [ avgK ];
+    K =  avgK ;
     
     
 elseif strcmp('quarter_car_2_DOF', vibration_model)
