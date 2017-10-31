@@ -62,7 +62,7 @@ switch ff_data.model
         
         
         %Forcing function 
-        FF = [(w - c*dRdt_f_d - k*R_f_d)];
+        FF = (w - c*dRdt_f_d - k*R_f_d);
         
     case 'quarter_car_2_DOF'
         %For quater car 2 DOF
