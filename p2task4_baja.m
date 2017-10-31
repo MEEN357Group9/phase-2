@@ -1,6 +1,6 @@
 % p2task4  Drives the  2016 Texas A&M race car of Phase 1 over the
-% speed bump roadway using forcing-function data structures f_2016_1, f_2014_2, f_2014_3
-% and f_2016_4.
+% speed bump roadway using forcing-function data structures ff_baja_1, ff_baja_2, ff_baja_3
+% and ff_baja_4.
 %
 % Phase 2, Task 4
 % Group 9: Kelsey Banasik, Zarah Navarro, Sonia Sanchez, Harland Ashby
@@ -11,7 +11,7 @@ clear all;
 close all;
 
 % 1/4 car 1 DOF
-run ff_2016_1;
+run ff_baja_1;
 
 D = ff_data;
 FN = @(t, D) get_forcing_function(t, D);
@@ -26,7 +26,7 @@ K = get_stiffness_matrix(D.model, D.car);
 [T1, X1, V1, A1] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 % 1/4 car 2 DOF
-run ff_2016_2;
+run ff_baja_2;
 
 D = ff_data;
 FN = @(t, D) get_forcing_function(t, D);
@@ -41,7 +41,7 @@ K = get_stiffness_matrix(D.model, D.car);
 [T2, X2, V2, A2] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 % 1/2 car 2 DOF
-run ff_2016_3;
+run ff_baja_3;
 
 D = ff_data;
 FN = @(t, D) get_forcing_function(t, D);
@@ -56,7 +56,7 @@ K = get_stiffness_matrix(D.model, D.car);
 [T3, X3, V3, A3] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 % 1/2 car 4 DOF
-run ff_2016_4;
+run ff_baja_4;
 
 D = ff_data;
 FN = @(t, D) get_forcing_function(t, D);
@@ -76,7 +76,7 @@ K = get_stiffness_matrix(D.model, D.car);
 figure
 subplot(3,1,1)
 plot(T1,X1(:,1),'k', T2,X2(:,1),'r', T3,X3(:,1), 'b', T4,X4(:,1), 'g')
-title('Displacements: Heave of a Car Hitting a Tar Strip')
+title('Displacements: Heave of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Displacement [ft]')
 legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
@@ -84,7 +84,7 @@ legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
 
 subplot(3,1,2)
 plot(T1,V1(:,1),'k', T2,V2(:,1),'r', T3,V3(:,1), 'b', T4,V4(:,1), 'g')
-title('Velocities: Heave of a Car Hitting a Tar Strip')
+title('Velocities: Heave of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Velocity [ft/s]')
 legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
@@ -92,7 +92,7 @@ legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
 
 subplot(3,1,3)
 plot(T1,A1(:,1),'k', T2,A2(:,1),'r', T3,A3(:,1), 'b', T4,A4(:,1), 'g')
-title('Accelerations: Heave of a Car Hitting a Tar Strip')
+title('Accelerations: Heave of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Acceleration [ft/s^2]')
 legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
@@ -102,21 +102,21 @@ legend('1/4 car 1 DOF','1/4 car 2 DOF', ...
 figure
 subplot(3,1,1)
 plot(T3,X3(:,2), 'b', T4,X4(:,2), 'g')
-title('Rotation: Pitch of a Car Hitting a Tar Strip')
+title('Rotation: Pitch of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Rotation [deg]')
 legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
 plot(T3,V3(:,2), 'b', T4,V4(:,2), 'g')
-title('Spin: Pitch of a Car Hitting a Tar Strip')
+title('Spin: Pitch of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Rotation [deg/s]')
 legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
 plot(T3,A3(:,2), 'b', T4,A4(:,2), 'g')
-title('Rate of Spin: Pitch of a Car Hitting a Tar Strip')
+title('Rate of Spin: Pitch of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Rotation [deg/s^2]')
 legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
@@ -125,21 +125,21 @@ legend('1/2 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 figure
 subplot(3,1,1)
 plot(T2,X2(:,2), 'b', T4,X4(:,3), 'g')
-title('Displacements: Front Axle of a Car Hitting a Tar Strip')
+title('Displacements: Front Axle of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Displacement [ft]')
 legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
 plot(T2,V2(:,2), 'b', T4,V4(:,3), 'g')
-title('Velocities: Front Axle of a Car Hitting a Tar Strip')
+title('Velocities: Front Axle of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Velocity [ft/s]')
 legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
 plot(T2,A2(:,2), 'b', T4,A4(:,3), 'g')
-title('Accelerations: Front Axle of a Car Hitting a Tar Strip')
+title('Accelerations: Front Axle of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Acceleration [ft/s^2]')
 legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
@@ -148,21 +148,21 @@ legend('1/4 car 2 DOF','1/2 car 4 DOF', 'location', 'northeast')
 figure
 subplot(3,1,1)
 plot(T4,X4(:,4), 'g')
-title('Displacements: Front Axle of a Car Hitting a Tar Strip')
+title('Displacements: Front Axle of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Displacement [ft]')
 legend('1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,2)
 plot( T4,V4(:,4), 'g')
-title('Velocities: Front Axle of a Car Hitting a Tar Strip')
+title('Velocities: Front Axle of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Velocity [ft/s]')
 legend('1/2 car 4 DOF', 'location', 'northeast')
 
 subplot(3,1,3)
 plot(T4,A4(:,4), 'g')
-title('Accelerations: Front Axle of a Car Hitting a Tar Strip')
+title('Accelerations: Front Axle of a Car Driving Down Agony Road')
 xlabel('Time [s]')
 ylabel('Acceleration [ft/s^2]')
 legend('1/2 car 4 DOF', 'location', 'northeast')
