@@ -77,7 +77,7 @@ elseif strcmp(ad3, vibration_model)
     % to the center of gravity
     
     % getting the lengths 
-    l = FSAE_Race_Car.chassis.length;
+    l = FSAE_Race_Car.chassis.length/12;
     cg = get_cg(FSAE_Race_Car); % ft
     lf = cg; % ft
     lr = l - cg; % ft
@@ -106,7 +106,7 @@ elseif strcmp(ad4, vibration_model)
     % to the center of gravity
     
     % getting the lengths 
-    l = FSAE_Race_Car.chassis.length;
+    l = FSAE_Race_Car.chassis.wheelbase/12;
     cg = get_cg(FSAE_Race_Car); % ft
     lf = cg; % ft
     lr = l - cg; % ft
