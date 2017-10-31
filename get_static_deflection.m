@@ -66,7 +66,7 @@ elseif strcmp('quarter_car_2_DOF', vibration_model)
     W = [ w; ww];
     
     % find z0
-    z0 = W\K; % gives units of ft
+    z0 = K\W; % gives units of ft
        
 elseif strcmp(ad3, vibration_model)
     % For half car 2 DOF
@@ -80,7 +80,7 @@ elseif strcmp(ad3, vibration_model)
     
     W = [ w ; 0 ]; % gives lbf
     
-    z0 = W\K; % ft 
+    z0 = K\W; % ft 
     
 elseif strcmp(ad4, vibration_model)
     % For half car 4 DOF
@@ -100,7 +100,7 @@ elseif strcmp(ad4, vibration_model)
     
     W = [ w ; 0 ; wf ; wr ];
     
-    z0 = W\K; % ft or rad
+    z0 = K\W; % ft or rad
     
 end
 
