@@ -25,6 +25,8 @@ K = get_stiffness_matrix(D.model, D.car);
 
 [T1, X1, V1, A1] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
+
+
 % 1/4 car 2 DOF
 run ff_2016_2;
 
