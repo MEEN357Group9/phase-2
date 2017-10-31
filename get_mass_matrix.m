@@ -94,7 +94,7 @@ elseif strcmp(ad4, vibration_model) == 1
     mr = ( FSAE_Race_Car.wheel_rear.weight ) / 32.2; % slugs
     
     % mass matrix
-    M = [m 0 0 0; 0 J 0 0; 0 0 mr 0; 0 0 0 mr];
+    M = [m 0 0 0; 0 J 0 0; 0 0 mf 0; 0 0 0 mr];
     
 else
     error('something went wrong');
