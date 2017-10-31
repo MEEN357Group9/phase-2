@@ -134,7 +134,7 @@ figure
 
 %Displacement
 subplot(3,1,1)
-plot(T2,X2(:,3),'b', T4,X4(:,3),'g')
+plot(T2,X2(:,2),'b', T4,X4(:,3),'g')
 ylim([-0.3 0.1])
 legend('1/4 car 2 DOF','1/2 car 4 DOF')
 title('Displacements: Front Axle of Car Hitting a Speed Bump')
@@ -143,7 +143,7 @@ ylabel('Displacement [ft]')
 
 % Velocity
 subplot(3,1,2)
-plot(T2,V2(:,3),'b', T4,V4(:,3),'g')
+plot(T2,V2(:,2),'b', T4,V4(:,3),'g')
 ylim([-10 10])
 legend('1/4 car 2 DOF','1/2 car 4 DOF')
 title('Velocities: Front Axle of Car Hitting a Speed Bump')
@@ -152,7 +152,7 @@ ylabel('Velocity [ft/s]')
 
 %Acceleration
 subplot(3,1,3)
-plot(T2,A2(:,3),'b', T4,A4(:,3),'g')
+plot(T2,A2(:,2),'b', T4,A4(:,3),'g')
 ylim([-400 400])
 legend('1/4 car 2 DOF','1/2 car 4 DOF')
 title('Accelerations: Front Axle of Car Hitting a Speed Bump')
