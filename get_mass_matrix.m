@@ -60,7 +60,7 @@ elseif strcmp(ad2,vibration_model) == 1
         / 2 / 32.2; % slugs
     
     % matrix form
-    M = [m 0; 0 mw];
+    M = [m, 0; 0, mw];
     
 elseif strcmp(ad3, vibration_model) == 1
     % M matrix for half car 2 DOF
