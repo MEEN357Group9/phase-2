@@ -23,6 +23,7 @@ M = get_mass_matrix(D.model, D.car);
 C = get_damping_matrix(D.model, D.car);
 K = get_stiffness_matrix(D.model, D.car);
 
+% for plotting
 [T1, X1, V1, A1] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 
@@ -40,6 +41,7 @@ M = get_mass_matrix(D.model, D.car);
 C = get_damping_matrix(D.model, D.car);
 K = get_stiffness_matrix(D.model, D.car);
 
+% for plotting
 [T2, X2, V2, A2] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 % 1/2 car 2 DOF
@@ -55,6 +57,7 @@ M = get_mass_matrix(D.model, D.car);
 C = get_damping_matrix(D.model, D.car);
 K = get_stiffness_matrix(D.model, D.car);
 
+% for plotting
 [T3, X3, V3, A3] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 % 1/2 car 4 DOF
@@ -70,6 +73,7 @@ M = get_mass_matrix(D.model, D.car);
 C = get_damping_matrix(D.model, D.car);
 K = get_stiffness_matrix(D.model, D.car);
 
+% for plotting
 [T4, X4, V4, A4] = Newmark(X0, V0, A0, M, C, K, FN, D);
 
 % 4 figures each with 3 plots 
